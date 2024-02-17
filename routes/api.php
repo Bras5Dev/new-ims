@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Api\AuthenticationController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,5 +33,26 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/store', [UserController::class, 'store']);
         Route::post('/update/{id}', [UserController::class, 'update']);
         Route::post('/delete/{id}', [UserController::class, 'destroy']);
+    });
+
+    Route::prefix('brand')->group(function () {
+        Route::post('/', [BrandController::class, 'index']);
+        Route::post('/store', [BrandController::class, 'store']);
+        Route::post('/update/{id}', [BrandController::class, 'update']);
+        Route::post('/delete/{id}', [BrandController::class, 'destroy']);
+    });
+
+    Route::prefix('category')->group(function () {
+        Route::post('/', [CategoryController::class, 'index']);
+        Route::post('/store', [CategoryController::class, 'store']);
+        Route::post('/update/{id}', [CategoryController::class, 'update']);
+        Route::post('/delete/{id}', [CategoryController::class, 'destroy']);
+    });
+
+    Route::prefix('product')->group(function () {
+        Route::post('/', [ProductController::class, 'index']);
+        Route::post('/store', [ProductController::class, 'store']);
+        Route::post('/update/{id}', [ProductController::class, 'update']);
+        Route::post('/delete/{id}', [ProductController::class, 'destroy']);
     });
 });
