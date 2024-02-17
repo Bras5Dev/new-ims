@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('type');
-            $table->string('phone_number');
-            $table->string('tax_number');
+            $table->enum('type', ['Customer', 'Supplier'])->default('Customer');
+            $table->string('phone_number')->unique();
+            $table->string('tax_number')->unique();
             $table->string('billing_address');
             $table->string('shipping_address');
             $table->timestamp('email_verified_at')->nullable();
