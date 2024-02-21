@@ -38,6 +38,17 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public static $rules = [
+        'name' => 'required',
+        'phone_number' => 'required',
+        'email' => 'required',
+        'tax_number' => 'required',
+        'billing_address' => 'required',
+        'shipping_address' => 'required',
+        'status' => 'required',
+    ];
+
+
     /**
      * The attributes that should be cast.
      *
