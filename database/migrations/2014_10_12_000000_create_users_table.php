@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('shipping_address');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
+            $table->boolean('status')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });
