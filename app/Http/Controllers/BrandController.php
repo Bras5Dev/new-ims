@@ -26,12 +26,14 @@ class BrandController extends BaseApiController
     {
         $request->validate([
             'name' => 'required',
-            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4056',
+            'slug' => 'required',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:4056',
         ]);
 
         $brand = new Brand();
         $brand->name = $request->name;
-        $brand->logo = $this->storeFile($request->file('logo'), 'brand');
+        $brand->slug = $request->name + '_' + rand(1000, 9999);
+        $brand->logo = ($this->storeFile($request->file('logo'), 'brand')) ?? 'xddd';
         $brand->save();
 
         return $this->sendSuccess('Brand created successfully.');
@@ -49,7 +51,7 @@ class BrandController extends BaseApiController
 
         $brand->name = $request->name;
 
-        if ($request->hasFile('logo')){
+        if ($request->hasFile('logo')) {
             $this->deleteFile($brand->logo, 'brand');
             $brand->logo = $this->storeFile($request->file('logo'), 'brand');
         }
@@ -67,6 +69,5 @@ class BrandController extends BaseApiController
         $brand->delete();
 
         return $this->sendSuccess('Brand deleted successfully.');
-
     }
 }

@@ -26,6 +26,7 @@ class User extends Authenticatable
         'shipping_address',
         'type',
         'password',
+        'status',
     ];
 
     /**
