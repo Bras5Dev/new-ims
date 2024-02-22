@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthenticationController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ExpenseCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SaleController;
 use Illuminate\Http\Request;
@@ -52,10 +53,19 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/delete/{id}', [ProductController::class, 'destroy']);
     });
 
+    // this are called product out as per client requirement
     Route::prefix('sale')->group(function () {
         Route::post('/', [SaleController::class, 'index']);
         Route::post('/store', [SaleController::class, 'store']);
         Route::post('/update/{id}', [SaleController::class, 'update']);
         Route::post('/delete/{id}', [SaleController::class, 'destroy']);
     });
+
+    Route::prefix('expense-category')->group(function () {
+        Route::post('/', [ExpenseCategoryController::class, 'index']);
+        Route::post('/store', [ExpenseCategoryController::class, 'store']);
+        Route::post('/update/{expenseCategory}', [ExpenseCategoryController::class, 'update']);
+        Route::post('/delete/{expenseCategory}', [ExpenseCategoryController::class, 'destroy']);
+    });
+
 });
