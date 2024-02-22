@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\UserRequest;
-use App\Models\{Customer,User,Supplier};
+use App\Models\{Customer, User, Supplier};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -20,8 +20,8 @@ class UserController extends BaseApiController
     }
     public function store(UserRequest $request)
     {
-       $user = User::create($request->validated());
-//        $password = Str::random(8);
+        $user = User::create($request->validated());
+        //        $password = Str::random(8);
 
         $password = 'randomvalue';
 
@@ -30,7 +30,7 @@ class UserController extends BaseApiController
         $user->save();
 
 
-        return $this->sendSuccess('Successfully created a new customer ' . $customer->name);
+        return $this->sendSuccess('Successfully created a new customer ' . $user->name);
     }
     public function update(Request $request, $id)
     {
@@ -45,7 +45,7 @@ class UserController extends BaseApiController
         ]);
         $user = User::find($id);
 
-        if($request->type == $user->type) {
+        if ($request->type == $user->type) {
             $user->name = $request->name;
             $user->phone_number = $request->phone_number;
             $user->email = $request->email;
@@ -56,7 +56,7 @@ class UserController extends BaseApiController
             $user->save();
         }
 
-        return $this->sendSuccess('Successfully updated ' . $user->name . $type);
+        return $this->sendSuccess('Successfully updated ' . $user->name . $user->type);
     }
 
     public function delete(User $user)
