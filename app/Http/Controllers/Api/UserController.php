@@ -16,7 +16,7 @@ class UserController extends BaseApiController
             return Supplier::all();
         }
 
-        return Customer::all();
+        return $this->sendResponse(Customer::all(), 'Successfully retrieved all customers');
     }
     public function store(UserRequest $request)
     {
@@ -40,8 +40,7 @@ class UserController extends BaseApiController
             'email' => 'required',
             'tax_number' => 'required',
             'billing_address' => 'required',
-            'shipping_address' => 'required',
-            'status' => 'required',
+            'shipping_address' => 'required'
         ]);
         $user = User::find($id);
 
@@ -59,7 +58,7 @@ class UserController extends BaseApiController
         return $this->sendSuccess('Successfully updated ' . $user->name . $user->type);
     }
 
-    public function delete(User $user)
+    public function destroy(User $user)
     {
         $user->delete();
 
