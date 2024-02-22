@@ -32,6 +32,17 @@ class Sale extends Model
         'payment_status' => 'required',
     ];
 
+    public static $update_rules = [
+        'invoice_number' => 'required',
+        'sale_date' => 'required',
+        'customer_id' => 'required',
+        'product_id' => 'required',
+        'status' => 'required',
+        'payment' => 'required',
+        'total_payment' => 'required',
+        'payment_status' => 'required',
+    ];
+
     public function customer() : BelongsTo
     {
         return $this->belongsTo(Customer::class);
