@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('billing_address');
             $table->string('shipping_address');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

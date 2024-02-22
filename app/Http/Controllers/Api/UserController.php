@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\UserRequest;
 use App\Models\{Customer,User,Supplier};
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserController extends BaseApiController
 {
@@ -18,7 +20,15 @@ class UserController extends BaseApiController
     }
     public function store(UserRequest $request)
     {
-       User::create($request->validated());
+       $user = User::create($request->validated());
+//        $password = Str::random(8);
+
+        $password = 'randomvalue';
+
+        $user->password = Hash::make($password);
+
+        $user->save();
+
 
         return $this->sendSuccess('Successfully created a new customer ' . $customer->name);
     }

@@ -48,7 +48,6 @@ class User extends Authenticatable
         'status' => 'required',
     ];
 
-
     /**
      * The attributes that should be cast.
      *
