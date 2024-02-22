@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Api\BaseApiController;
+use App\Http\Requests\UpdateSaleRequest;
 use App\Models\Sale;
 use App\Http\Requests\StoreSaleRequest;
 
@@ -39,7 +40,7 @@ class SaleController extends BaseApiController
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreSaleRequest $request, Sale $sale)
+    public function update(UpdateSaleRequest $request, Sale $sale)
     {
         $sale->update($request->validated());
 
