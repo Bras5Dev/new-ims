@@ -33,7 +33,7 @@ class BrandController extends BaseApiController
         $brand = new Brand();
         $brand->name = $request->name;
         $brand->slug = $request->name . '_' . rand(1000, 9999);
-        $brand->logo = ($this->storeFile($request->file('logo'), 'brand')) ?? 'xddd';
+        $brand->logo = ($this->storeFile($request->file('logo'), 'brand')) ?? 'xdddd';
         $brand->save();
 
         return $this->sendSuccess('Brand created successfully.');
