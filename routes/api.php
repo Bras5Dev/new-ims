@@ -35,8 +35,8 @@ Route::prefix('customer')->group(function () {
 Route::prefix('brands')->group(function () {
     Route::get('/', [BrandController::class, 'index']);
     Route::post('/', [BrandController::class, 'store']);
-    Route::put('/{id}', [BrandController::class, 'update']);
-    Route::delete('/{id}', [BrandController::class, 'destroy']);
+    Route::put('/{brand}', [BrandController::class, 'update']);
+    Route::delete('/{brand}', [BrandController::class, 'destroy']);
 });
 
 Route::prefix('category')->group(function () {

@@ -26,7 +26,9 @@ class Brand extends Model
 
     public function getLogoUrlAttribute()
     {
-        return $this->photo ? asset('storage/brand/' . $this->photo) : null;
+        return $this->logo
+            ? asset('storage/brand/'.$this->logo)
+            : asset('storage/brand/no-image.png');
     }
 
     public function products() : HasMany
