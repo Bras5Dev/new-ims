@@ -20,6 +20,15 @@ class Brand extends Model
         'updated_at',
     ];
 
+    protected $appends = [
+        'logo_url',
+    ];
+
+    public function getLogoUrlAttribute()
+    {
+        return $this->photo ? asset('storage/brand/' . $this->photo) : null;
+    }
+
     public function products() : HasMany
     {
         return $this->hasMany(Product::class);
