@@ -31,7 +31,6 @@ class UserController extends BaseApiController
 
 
         return $this->sendSuccess('Successfully created a new customer ' . $user->name);
-
     }
     public function update(Request $request, $id)
     {
@@ -56,7 +55,7 @@ class UserController extends BaseApiController
             $user->save();
         }
 
-      return $this->sendSuccess('Successfully updated ' . $user->name .' '. $user->type);
+        return $this->sendSuccess('Successfully updated ' . $user->name . $user->type);
     }
 
     public function destroy(User $user)
