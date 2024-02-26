@@ -37,6 +37,7 @@ class BrandController extends BaseApiController
         $brand->save();
 
         $brand->slug = $brand->name . '-' . $brand->id;
+        $brand->save();
 
         return $this->sendSuccess('Brand created successfully.');
     }

@@ -49,16 +49,16 @@ Route::prefix('categories')->group(function () {
 Route::prefix('product')->group(function () {
     Route::get('/', [ProductController::class, 'index']);
     Route::post('/store', [ProductController::class, 'store']);
-    Route::post('/update/{id}', [ProductController::class, 'update']);
-    Route::delete('/delete/{id}', [ProductController::class, 'destroy']);
+    Route::post('/update/{product}', [ProductController::class, 'update']);
+    Route::delete('/delete/{product}', [ProductController::class, 'destroy']);
 });
 
 // this are called product out as per client requirement
 Route::prefix('sale')->group(function () {
     Route::get('/', [SaleController::class, 'index']);
     Route::post('/store', [SaleController::class, 'store']);
-    Route::post('/update/{id}', [SaleController::class, 'update']);
-    Route::delete('/delete/{id}', [SaleController::class, 'destroy']);
+    Route::post('/update/{sale}', [SaleController::class, 'update']);
+    Route::delete('/delete/{sale}', [SaleController::class, 'destroy']);
 });
 
 Route::prefix('expense-category')->group(function () {
