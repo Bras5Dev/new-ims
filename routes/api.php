@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ExpenseCategoryController;
+use App\Http\Controllers\ExpensesRecordController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SaleController;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [AuthenticationController::class, 'login']);
 
-//Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
 
 Route::prefix('customer')->group(function () {
     Route::get('/', [UserController::class, 'index']);
@@ -68,4 +69,11 @@ Route::prefix('expense_category')->group(function () {
     Route::delete('/{expenseCategory}', [ExpenseCategoryController::class, 'destroy']);
 });
 
-//});
+    Route::prefix('expenses_record')->group(function () {
+        Route::get('/', [ExpensesRecordController::class, 'index']);
+        Route::post('/', [ExpensesRecordController::class, 'store']);
+        Route::post('/{expensesRecord}', [ExpensesRecordController::class, 'update']);
+        Route::delete('/{expensesRecord}', [ExpensesRecordController::class, 'destroy']);
+    });
+
+});
