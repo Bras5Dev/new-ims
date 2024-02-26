@@ -29,9 +29,12 @@ class CategoryController extends BaseApiController
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:4056'
         ]);
 
+        if ($request->has('logo')) {
+            $logo =   $this->storeFile($request->file('logo'), 'category');
+        }
         $category = new Category();
         $category->name = $request->name;
-        $category->logo = $this->storeFile($request->file('logo'), 'category') ?? null;
+        $category->logo = $logo ?? null;
         $category->save();
 
         return $this->sendSuccess('Category created successfully.');
