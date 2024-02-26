@@ -32,8 +32,8 @@ class BrandController extends BaseApiController
         $brand = new Brand();
         $brand->name = $request->name;
         $brand->logo = $request->hasFile('logo')
-                        ? $this->storeFile($request->file('logo'), 'brand')
-                        : null;
+            ? $this->storeFile($request->file('logo'), 'brand')
+            : null;
         $brand->save();
 
         $brand->slug = $brand->name . '-' . $brand->id;
@@ -67,8 +67,8 @@ class BrandController extends BaseApiController
      */
     public function destroy(Brand $brand)
     {
-        if ($brand->logo != null){
-         $this->deleteFile($brand->logo, 'brand');
+        if ($brand->logo != null) {
+            $this->deleteFile($brand->logo, 'brand');
         }
         $brand->delete();
 
