@@ -26,12 +26,12 @@ class CategoryController extends BaseApiController
     {
         $request->validate([
             'name' => 'required',
-            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4056'
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:4056'
         ]);
 
         $category = new Category();
         $category->name = $request->name;
-        $category->logo = $this->storeFile($request->file('logo'), 'category');
+        $category->logo = $this->storeFile($request->file('logo'), 'category') ?? null;
         $category->save();
 
         return $this->sendSuccess('Category created successfully.');
@@ -49,7 +49,7 @@ class CategoryController extends BaseApiController
 
         $category->name = $request->name;
 
-        if ($request->hasFile('logo')){
+        if ($request->hasFile('logo')) {
             $this->deleteFile($category->logo, 'category');
             $category->logo = $this->storeFile($request->file('logo'), 'category');
         }
