@@ -11,11 +11,19 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'logo'];
+    protected $appends = ['logo_url'];
 
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function products() : HasMany
+    public function products(): HasMany
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function getLogoUrlAttribute()
+    {
+        return $this->logo
+            ? asset('storage/category/' . $this->logo)
+            : asset('storage/category/no-image.png');
     }
 }
