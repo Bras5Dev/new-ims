@@ -10,13 +10,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
-class AuthenticationController extends Controller
+class AuthenticationController extends BaseApiController
 {
     public function login(Request $request)
     {
         try {
             $request->validate([
-                'email' => 'required|string|email',
+                'email' => 'required|email',
                 'password' => 'required'
             ]);
 
