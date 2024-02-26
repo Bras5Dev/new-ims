@@ -39,11 +39,11 @@ Route::prefix('brands')->group(function () {
     Route::delete('/{brand}', [BrandController::class, 'destroy']);
 });
 
-Route::prefix('category')->group(function () {
+Route::prefix('categories')->group(function () {
     Route::get('/', [CategoryController::class, 'index']);
-    Route::post('/store', [CategoryController::class, 'store']);
-    Route::post('/update/{category}', [CategoryController::class, 'update']);
-    Route::delete('/delete/{category}', [CategoryController::class, 'destroy']);
+    Route::post('/', [CategoryController::class, 'store']);
+    Route::put('/{id}', [CategoryController::class, 'update']);
+    Route::delete('/{id}', [CategoryController::class, 'destroy']);
 });
 
 Route::prefix('product')->group(function () {
