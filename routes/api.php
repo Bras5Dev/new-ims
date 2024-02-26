@@ -61,11 +61,11 @@ Route::prefix('sale')->group(function () {
     Route::delete('/delete/{sale}', [SaleController::class, 'destroy']);
 });
 
-Route::prefix('expense-category')->group(function () {
+Route::prefix('expense_category')->group(function () {
     Route::get('/', [ExpenseCategoryController::class, 'index']);
-    Route::post('/store', [ExpenseCategoryController::class, 'store']);
-    Route::post('/update/{expenseCategory}', [ExpenseCategoryController::class, 'update']);
-    Route::delete('/delete/{expenseCategory}', [ExpenseCategoryController::class, 'destroy']);
+    Route::post('/', [ExpenseCategoryController::class, 'store']);
+    Route::post('/{expenseCategory}', [ExpenseCategoryController::class, 'update']);
+    Route::delete('/{expenseCategory}', [ExpenseCategoryController::class, 'destroy']);
 });
 
 //});
