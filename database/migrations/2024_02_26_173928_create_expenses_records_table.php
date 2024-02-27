@@ -15,8 +15,12 @@ return new class extends Migration
     {
         Schema::create('expenses_records', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class, 'user_id')->constrained();
-            $table->foreignIdFor(ExpenseCategory::class, 'expense_id')->constrained();
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->unsignedBigInteger('expense_id');
+            $table->foreign('expense_id')->references('id')->on('expense_categories');
 
             $table->string('amount');
             $table->date('date');
