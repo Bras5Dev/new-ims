@@ -30,6 +30,9 @@ class AuthenticationController extends BaseApiController
                 return response()->json(['message' => 'Your email or password does not match'], 422);
             }
 
+            if ($user->status == "disabled") {
+                return response()->json(['message' => 'Account Disabled'], 401);
+            }
 
             if (!Auth::attempt(['email' => $user->email, 'password' => $password])) {
                 return response()->json(['message' => 'Authentication failed'], 401);
