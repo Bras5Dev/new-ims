@@ -24,6 +24,7 @@ class ExpensesRecordController extends BaseApiController
     public function store(ExpensesRecordRequest $request)
     {
         $expenses_record = ExpensesRecord::create($request->validated());
+
         $expenses_record->bill = $request->hasFile('bill')
                                 ? $this->storeFile($request->file('bill'), 'ExpensesRecord')
                                 : null;

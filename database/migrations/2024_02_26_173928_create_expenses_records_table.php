@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ExpenseCategory;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -14,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('expenses_records', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(User::class, 'user_id')->constrained();
+            $table->foreignIdFor(ExpenseCategory::class, 'expense_id')->constrained();
 
-            $table->string('name');
             $table->string('amount');
             $table->date('date');
-            $table->foreignIdFor(User::class, 'user_id')->constrained();
             $table->string('bill')->nullable();
             $table->string('bank_name')->nullable();
 

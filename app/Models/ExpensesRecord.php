@@ -10,10 +10,10 @@ class ExpensesRecord extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'user_id',
+        'expense_id',
         'amount',
         'date',
-        'user_id',
         'bill',
         'bank_name'
     ];
@@ -24,10 +24,10 @@ class ExpensesRecord extends Model
     ];
 
     public static $rules =  [
-            'name' => 'required|string',
+            'user_id' => 'required|exists:users,id',
+            'expense_id' => 'required|exists:expense_categories,id',
             'amount' => 'required|numeric',
             'date' => 'required|date',
-            'user_id' => 'required|exists:users,id',
             'bill' => 'sometimes|max:4096',
             'bank_name' => 'sometimes|string'
         ];
@@ -35,5 +35,10 @@ class ExpensesRecord extends Model
     public function users()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function expenseCategories()
+    {
+        return $this->belongsTo(ExpenseCategory::class);
     }
 }

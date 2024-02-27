@@ -18,4 +18,9 @@ class ExpenseCategory extends Model
         'updated_at',
     ];
 
+    public function expenseRecord()
+    {
+        $this->hasMany(ExpensesRecord::class);
+    }
+
 }
