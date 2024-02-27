@@ -26,6 +26,7 @@ class AuthenticationController extends BaseApiController
                 ->first();
 
             if (!$user || !Hash::check($password, $user->password)) {
+                Log::info('User failed to login.', ['email' => $request['email'], 'id' => $user->id ?? 'N/A']);
                 return response()->json(['message' => 'Your email or password does not match'], 422);
             }
 

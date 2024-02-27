@@ -14,7 +14,7 @@ class ExpenseCategoryController extends BaseApiController
      */
     public function index()
     {
-        //
+        return $this->sendResponse(ExpenseCategory::all(), 'Expense categories retrieved successfully.');
     }
 
     /**

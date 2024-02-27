@@ -66,7 +66,9 @@ class CategoryController extends BaseApiController
      */
     public function destroy(Category $category)
     {
-        $this->deleteFile($category->logo, 'category');
+        if ($category->logo != null){
+            $this->deleteFile($category->logo, 'category');
+        }
         $category->delete();
 
         return $this->sendSuccess('Category deleted successfully.');

@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\Api\AuthenticationController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\BankController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ExpenseCategoryController;
+use App\Http\Controllers\ExpensesRecordController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SaleController;
 use Illuminate\Http\Request;
@@ -42,8 +44,8 @@ Route::prefix('brands')->group(function () {
 Route::prefix('categories')->group(function () {
     Route::get('/', [CategoryController::class, 'index']);
     Route::post('/', [CategoryController::class, 'store']);
-    Route::put('/{id}', [CategoryController::class, 'update']);
-    Route::delete('/{id}', [CategoryController::class, 'destroy']);
+    Route::put('/{category}', [CategoryController::class, 'update']);
+    Route::delete('/{category}', [CategoryController::class, 'destroy']);
 });
 
 Route::prefix('product')->group(function () {
@@ -61,11 +63,25 @@ Route::prefix('sale')->group(function () {
     Route::delete('/delete/{sale}', [SaleController::class, 'destroy']);
 });
 
-Route::prefix('expense-category')->group(function () {
+Route::prefix('expense_category')->group(function () {
     Route::get('/', [ExpenseCategoryController::class, 'index']);
-    Route::post('/store', [ExpenseCategoryController::class, 'store']);
-    Route::post('/update/{expenseCategory}', [ExpenseCategoryController::class, 'update']);
-    Route::delete('/delete/{expenseCategory}', [ExpenseCategoryController::class, 'destroy']);
+    Route::post('/', [ExpenseCategoryController::class, 'store']);
+    Route::put('/{expenseCategory}', [ExpenseCategoryController::class, 'update']);
+    Route::delete('/{expenseCategory}', [ExpenseCategoryController::class, 'destroy']);
 });
+
+    Route::prefix('expenses_record')->group(function () {
+        Route::get('/', [ExpensesRecordController::class, 'index']);
+        Route::post('/', [ExpensesRecordController::class, 'store']);
+        Route::put('/{expensesRecord}', [ExpensesRecordController::class, 'update']);
+        Route::delete('/{expensesRecord}', [ExpensesRecordController::class, 'destroy']);
+    });
+
+    Route::prefix('bank')->group(function () {
+        Route::get('/', [BankController::class, 'index']);
+        Route::post('/', [BankController::class, 'store']);
+        Route::put('/{bank}', [BankController::class, 'update']);
+        Route::delete('/{bank}', [BankController::class, 'destroy']);
+    });
 
 //});
