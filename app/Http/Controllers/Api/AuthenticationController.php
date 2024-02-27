@@ -41,14 +41,14 @@ class AuthenticationController extends BaseApiController
             $tokenExpiration = now()->addMinutes(config('sanctum.expiration'));
 
             $role = $user->roles()->pluck('name')->first();
-            $perms = $role->permissions()->pluck('name')->all();
+            // $perms = $role->permissions()->pluck('name')->all();
 
             return $this->sendResponse([
                 'user' => $user,
                 'token' => $token,
                 'token_expiration' => $tokenExpiration, // Include token expiration time
                 'role' => $role,
-                'perms' => $perms,
+                // 'perms' => $perms,
             ], 'User logged in successfully');
         } catch (Exception $e) {
             return $this->sendError('Something went wrong on the server side. Please report this error to MAU');
