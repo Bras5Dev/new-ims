@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthenticationController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\BankController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ExpenseCategoryController;
@@ -74,6 +75,13 @@ Route::prefix('expense_category')->group(function () {
         Route::post('/', [ExpensesRecordController::class, 'store']);
         Route::put('/{expensesRecord}', [ExpensesRecordController::class, 'update']);
         Route::delete('/{expensesRecord}', [ExpensesRecordController::class, 'destroy']);
+    });
+
+    Route::prefix('bank')->group(function () {
+        Route::get('/', [BankController::class, 'index']);
+        Route::post('/', [BankController::class, 'store']);
+        Route::put('/{bank}', [BankController::class, 'update']);
+        Route::delete('/{bank}', [BankController::class, 'destroy']);
     });
 
 //});
