@@ -65,7 +65,7 @@ Route::prefix('sale')->group(function () {
 Route::prefix('expense_category')->group(function () {
     Route::get('/', [ExpenseCategoryController::class, 'index']);
     Route::post('/', [ExpenseCategoryController::class, 'store']);
-    Route::post('/{expenseCategory}', [ExpenseCategoryController::class, 'update']);
+    Route::put('/{expenseCategory}', [ExpenseCategoryController::class, 'update']);
     Route::delete('/{expenseCategory}', [ExpenseCategoryController::class, 'destroy']);
 });
 
