@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [AuthenticationController::class, 'login']);
 
-Route::middleware('auth:sanctum')->group(function () {
+//Route::middleware('auth:sanctum')->group(function () {
 
 Route::prefix('customer')->group(function () {
     Route::get('/', [UserController::class, 'index']);
@@ -76,4 +76,4 @@ Route::prefix('expense_category')->group(function () {
         Route::delete('/{expensesRecord}', [ExpensesRecordController::class, 'destroy']);
     });
 
-});
+//});
