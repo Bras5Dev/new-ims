@@ -9,6 +9,8 @@ class ExpenseCategory extends Model
 {
     use HasFactory;
 
+    protected $table = 'expense_categories';
+
     protected $fillable = [
         'name', 'description'
     ];
@@ -22,5 +24,4 @@ class ExpenseCategory extends Model
     {
         $this->hasMany(ExpensesRecord::class);
     }
-
 }
