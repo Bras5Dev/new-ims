@@ -34,7 +34,7 @@ class UsersSeeder extends Seeder
                 'phone_number' => '9800000000',
                 'type' => 'staff_member',
                 'status' => 'active',
-                'password' => '$2y$10$p5bhixQrtkCASknNO9U7Zucwqxy874KpUjDCxjLpZeqfB17oZ8PWm',
+                'password' => '$2y$10$NhPjTUWqCHE7.j7eZCEJseWZ8ZHmHBzwqNb6QNK/4z7VcNim7uVhK',
             ],
             [
                 'name' => 'Account',
@@ -42,7 +42,7 @@ class UsersSeeder extends Seeder
                 'phone_number' => '9800000001',
                 'type' => 'staff_member',
                 'status' => 'active',
-                'password' => '$2y$10$p5bhixQrtkCASknNO9U7Zucwqxy874KpUjDCxjLpZeqfB17oZ8PWm',
+                'password' => '$2y$10$NhPjTUWqCHE7.j7eZCEJseWZ8ZHmHBzwqNb6QNK/4z7VcNim7uVhK',
             ],
             [
                 'name' => 'Inventory',
@@ -50,7 +50,7 @@ class UsersSeeder extends Seeder
                 'phone_number' => '9800000002',
                 'type' => 'staff_member',
                 'status' => 'active',
-                'password' => '$2y$10$p5bhixQrtkCASknNO9U7Zucwqxy874KpUjDCxjLpZeqfB17oZ8PWm',
+                'password' => '$2y$10$NhPjTUWqCHE7.j7eZCEJseWZ8ZHmHBzwqNb6QNK/4z7VcNim7uVhK',
             ],
         ];
 

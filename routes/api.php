@@ -29,9 +29,9 @@ Route::post('/login', [AuthenticationController::class, 'login']);
 
 Route::prefix('customer')->group(function () {
     Route::get('/', [UserController::class, 'index']);
-    Route::post('/store', [UserController::class, 'store']);
-    Route::post('/update/{id}', [UserController::class, 'update']);
-    Route::delete('/delete/{id}', [UserController::class, 'destroy']);
+    Route::post('/', [UserController::class, 'store']);
+    Route::put('/{id}', [UserController::class, 'update']);
+    Route::delete('/{id}', [UserController::class, 'destroy']);
 });
 
 Route::prefix('brands')->group(function () {
@@ -70,18 +70,18 @@ Route::prefix('expense_category')->group(function () {
     Route::delete('/{expenseCategory}', [ExpenseCategoryController::class, 'destroy']);
 });
 
-    Route::prefix('expenses_record')->group(function () {
-        Route::get('/', [ExpensesRecordController::class, 'index']);
-        Route::post('/', [ExpensesRecordController::class, 'store']);
-        Route::put('/{expensesRecord}', [ExpensesRecordController::class, 'update']);
-        Route::delete('/{expensesRecord}', [ExpensesRecordController::class, 'destroy']);
-    });
+Route::prefix('expenses_record')->group(function () {
+    Route::get('/', [ExpensesRecordController::class, 'index']);
+    Route::post('/', [ExpensesRecordController::class, 'store']);
+    Route::put('/{expensesRecord}', [ExpensesRecordController::class, 'update']);
+    Route::delete('/{expensesRecord}', [ExpensesRecordController::class, 'destroy']);
+});
 
-    Route::prefix('bank')->group(function () {
-        Route::get('/', [BankController::class, 'index']);
-        Route::post('/', [BankController::class, 'store']);
-        Route::put('/{bank}', [BankController::class, 'update']);
-        Route::delete('/{bank}', [BankController::class, 'destroy']);
-    });
+Route::prefix('bank')->group(function () {
+    Route::get('/', [BankController::class, 'index']);
+    Route::post('/', [BankController::class, 'store']);
+    Route::put('/{bank}', [BankController::class, 'update']);
+    Route::delete('/{bank}', [BankController::class, 'destroy']);
+});
 
 //});
