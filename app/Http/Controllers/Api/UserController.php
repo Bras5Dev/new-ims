@@ -58,9 +58,10 @@ class UserController extends BaseApiController
         return $this->sendSuccess('Successfully updated ' . $user->name . $user->type);
     }
 
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        $user->delete();
+        $customer = User::find($id);
+        $customer->delete();
 
         return $this->sendSuccess('Successfully deleted');
     }
