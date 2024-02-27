@@ -13,7 +13,7 @@ class BankController extends BaseApiController
      */
     public function index()
     {
-        $this->sendResponse(Bank::all(), 'Banks retrieved successfully.');
+        return $this->sendResponse(Bank::all(), 'Banks retrieved successfully.');
     }
 
     /**
@@ -23,7 +23,7 @@ class BankController extends BaseApiController
     {
         $bank = Bank::create($request->validated());
 
-        $this->sendResponse($bank, 'Bank created successfully.');
+        return $this->sendResponse($bank, 'Bank created successfully.');
     }
 
     /**
@@ -31,7 +31,7 @@ class BankController extends BaseApiController
      */
     public function show(Bank $bank)
     {
-        $this->sendResponse($bank, 'Bank retrieved successfully.');
+        return $this->sendResponse($bank, 'Bank retrieved successfully.');
     }
 
     /**
@@ -41,7 +41,7 @@ class BankController extends BaseApiController
     {
         $bank->update($request->validated());
 
-        $this->sendResponse($bank, 'Bank updated successfully.');
+        return $this->sendResponse($bank, 'Bank updated successfully.');
     }
 
     /**
@@ -51,6 +51,6 @@ class BankController extends BaseApiController
     {
         $bank->delete();
 
-        $this->sendSuccess('Bank deleted successfully.');
+        return  $this->sendSuccess('Bank deleted successfully.');
     }
 }

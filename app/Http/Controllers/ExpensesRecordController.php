@@ -15,7 +15,7 @@ class ExpensesRecordController extends BaseApiController
      */
     public function index()
     {
-        $this->sendResponse(ExpensesRecord::all(), 'Expenses records retrieved successfully');
+       return $this->sendResponse(ExpensesRecord::all(), 'Expenses records retrieved successfully');
     }
 
     /**
