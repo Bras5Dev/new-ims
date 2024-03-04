@@ -22,6 +22,6 @@ class ExpensesRecordRequest extends FormRequest
      */
     public function rules(): array
     {
-        return ExpensesRecord::rules();
+        return ExpensesRecord::$rules;
     }
 }
