@@ -49,7 +49,6 @@ class User extends Authenticatable
         'tax_number' => 'required',
         'billing_address' => 'required',
         'shipping_address' => 'required',
-        'status' => 'required',
     ];
 
     /**

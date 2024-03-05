@@ -13,10 +13,10 @@ class UserController extends BaseApiController
     public function index(Request $request)
     {
         if ($request->route('type') == 'Supplier') {
-            return $this->sendResponse(Supplier::all(), 'Successfully retrieved all customers');
+            return $this->sendResponse(Supplier::where('type', 'supplier')->get(), 'Successfully retrieved all customers');
         }
 
-        return $this->sendResponse(Customer::all(), 'Successfully retrieved all customers');
+        return $this->sendResponse(Customer::where('type', 'customer')->get(), 'Successfully retrieved all customers');
     }
     public function store(UserRequest $request)
     {
@@ -38,7 +38,7 @@ class UserController extends BaseApiController
         $request->validate([
             'name' => 'required',
             'phone_number' => 'required',
-            'email' => 'required',
+            'required|email|unique:users,email,' . $id . '|exists:users,email',
             'tax_number' => 'required',
             'billing_address' => 'required',
             'shipping_address' => 'required'
