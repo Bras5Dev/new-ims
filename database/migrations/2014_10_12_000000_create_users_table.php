@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->enum('type', ['customer', 'supplier', 'staff_member'])->default('customer');
+            $table->enum('type', ['customer', 'supplier', 'staff_member']);
             $table->string('phone_number')->unique();
             $table->string('tax_number')->unique()->nullable();
             $table->string('billing_address')->nullable();

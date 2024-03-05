@@ -10,10 +10,10 @@ use Illuminate\Support\Str;
 
 class UserController extends BaseApiController
 {
-    public function index()
+    public function index(Request $request)
     {
-        if (request()->type == 'Supplier') {
-            return Supplier::all();
+        if ($request->route('type') == 'Supplier') {
+            return $this->sendResponse(Supplier::all(), 'Successfully retrieved all customers');
         }
 
         return $this->sendResponse(Customer::all(), 'Successfully retrieved all customers');
@@ -26,6 +26,7 @@ class UserController extends BaseApiController
         $password = 'randomvalue';
 
         $user->password = Hash::make($password);
+        $user->type = $request->route('type');
 
         $user->save();
 

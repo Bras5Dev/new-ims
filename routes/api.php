@@ -27,11 +27,13 @@ Route::post('/login', [AuthenticationController::class, 'login']);
 
 //Route::middleware('auth:sanctum')->group(function () {
 
-Route::prefix('customer')->group(function () {
-    Route::get('/', [UserController::class, 'index']);
-    Route::post('/', [UserController::class, 'store']);
-    Route::put('/{id}', [UserController::class, 'update']);
-    Route::delete('/{id}', [UserController::class, 'destroy']);
+Route::prefix('user/')->group(function () {
+    Route::prefix('{type}')->group(function () {
+        Route::get('/', [UserController::class, 'index']);
+        Route::post('/', [UserController::class, 'store']);
+    });
+        Route::put('/{id}', [UserController::class, 'update']);
+        Route::delete('/{id}', [UserController::class, 'destroy']);
 });
 
 Route::prefix('brands')->group(function () {
