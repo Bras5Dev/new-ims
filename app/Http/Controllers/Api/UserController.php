@@ -13,10 +13,14 @@ class UserController extends BaseApiController
     public function index(Request $request)
     {
         if ($request->route('type') == 'Supplier') {
-            return $this->sendResponse(Supplier::where('type', 'supplier')->get(), 'Successfully retrieved all customers');
+            $suppliers = User::where('type', 'supplier')->get();
+            return $this->sendResponse($suppliers, 'Successfully retrieved all Suppliers');
         }
 
-        return $this->sendResponse(Customer::where('type', 'customer')->get(), 'Successfully retrieved all customers');
+        if ($request->route('type') == 'Customer') {
+            $customers = User::where('type', 'customer')->get();
+            return $this->sendResponse($customers, 'Successfully retrieved all Customers');
+        }
     }
     public function store(UserRequest $request)
     {
