@@ -18,7 +18,9 @@ class Product extends Model
         'purchase_price',
         'stock',
         'image',
-        'quantity_alert'
+        'quantity_alert',
+        'unit',
+        'description'
     ];
 
     protected $hidden = [
@@ -34,7 +36,9 @@ class Product extends Model
         'purchase_price' => 'required|numeric',
         'stock' => 'required|integer',
         'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
-        'quantity_alert' => 'integer'
+        'quantity_alert' => 'integer',
+        'unit' => 'required|string',
+        'description' => 'required|string'
     ];
 
     public function category() : BelongsTo
