@@ -24,7 +24,8 @@ return new class extends Migration
             $table->string('image');
 
             $table->integer('quantity_alert')->default(0);
-
+            $table->string('unit');
+            $table->text('description');
 
             $table->timestamps();
         });
