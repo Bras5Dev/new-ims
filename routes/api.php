@@ -58,7 +58,7 @@ Route::prefix('product')->group(function () {
 });
 
 // this are called product out as per client requirement
-Route::prefix('sale')->group(function () {
+Route::prefix('product_out')->group(function () {
     Route::get('/', [SaleController::class, 'index']);
     Route::post('/store', [SaleController::class, 'store']);
     Route::post('/update/{sale}', [SaleController::class, 'update']);

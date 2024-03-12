@@ -23,6 +23,9 @@ return new class extends Migration
             $table->string('stock');
             $table->string('image');
 
+            $table->integer('quantity_alert')->default(0);
+
+
             $table->timestamps();
         });
     }
