@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AccountInController;
+use App\Http\Controllers\AccountOutController;
 use App\Http\Controllers\Api\AuthenticationController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\BankController;
@@ -72,6 +74,20 @@ Route::prefix('product_in')->group(function () {
     Route::post('/{product_in}', [ProductInController::class, 'show']);
     Route::put('/{product_in}', [ProductInController::class, 'update']);
     Route::delete('/{product_in}', [ProductInController::class, 'destroy']);
+});
+
+Route::prefix('account_in')->group(function () {
+    Route::get('/', [AccountInController::class, 'index']);
+    Route::post('/', [AccountInController::class, 'store']);
+    Route::put('/{accountin}', [AccountInController::class, 'update']);
+    Route::delete('/{accountin}', [AccountInController::class, 'destroy']);
+});
+
+Route::prefix('account_out')->group(function () {
+    Route::get('/', [AccountOutController::class, 'index']);
+    Route::post('/', [AccountOutController::class, 'store']);
+    Route::put('/{accountout}', [AccountOutController::class, 'update']);
+    Route::delete('/{accountout}', [AccountOutController::class, 'destroy']);
 });
 
 Route::prefix('expense_category')->group(function () {
