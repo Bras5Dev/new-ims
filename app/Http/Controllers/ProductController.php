@@ -16,7 +16,7 @@ class ProductController extends BaseApiController
      */
     public function index()
     {
-        //
+        return $this->sendResponse(Product::latest()->get() ,'Products retrieved successfully.');
     }
 
     /**
