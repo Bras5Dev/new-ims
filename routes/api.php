@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ExpenseCategoryController;
 use App\Http\Controllers\ExpensesRecordController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductInController;
 use App\Http\Controllers\SaleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -52,17 +53,25 @@ Route::prefix('categories')->group(function () {
 
 Route::prefix('product')->group(function () {
     Route::get('/', [ProductController::class, 'index']);
-    Route::post('/store', [ProductController::class, 'store']);
-    Route::post('/update/{product}', [ProductController::class, 'update']);
+    Route::post('/', [ProductController::class, 'store']);
+    Route::put('/{product}', [ProductController::class, 'update']);
     Route::delete('/delete/{product}', [ProductController::class, 'destroy']);
 });
 
 // this are called product out as per client requirement
 Route::prefix('product_out')->group(function () {
     Route::get('/', [SaleController::class, 'index']);
-    Route::post('/store', [SaleController::class, 'store']);
-    Route::post('/update/{sale}', [SaleController::class, 'update']);
-    Route::delete('/delete/{sale}', [SaleController::class, 'destroy']);
+    Route::post('/', [SaleController::class, 'store']);
+    Route::put('/{sale}', [SaleController::class, 'update']);
+    Route::delete('/{sale}', [SaleController::class, 'destroy']);
+});
+
+Route::prefix('product_in')->group(function () {
+    Route::get('/', [ProductInController::class, 'index']);
+    Route::post('/', [ProductInController::class, 'store']);
+    Route::post('/{product_in}', [ProductInController::class, 'show']);
+    Route::put('/{product_in}', [ProductInController::class, 'update']);
+    Route::delete('/{product_in}', [ProductInController::class, 'destroy']);
 });
 
 Route::prefix('expense_category')->group(function () {
