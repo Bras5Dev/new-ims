@@ -30,7 +30,7 @@ class Product extends Model
         'category_id' => 'required|exists:categories,id',
         'brand_id' => 'required|exists:brands,id',
         'name' => 'required|string',
-        'stock' => 'required|integer',
+        'stock' => 'integer',
         'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         'quantity_alert' => 'integer',
         'unit' => 'required|string',
