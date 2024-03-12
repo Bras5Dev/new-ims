@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\Brand::class);
 
             $table->string('name');
-            $table->string('stock');
+            $table->string('stock')->default(0);
             $table->string('image');
 
             $table->integer('quantity_alert')->default(0);
