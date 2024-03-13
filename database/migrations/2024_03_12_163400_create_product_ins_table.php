@@ -17,9 +17,13 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->enum('payment_method', ['cash', 'bank']);
-            $table->foreignId('bank_id')->constrained('banks');
-            $table->string('amount');
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products');
+
+            $table->string('date');
+            $table->string('purchase_price');
+            $table->string('stock');
+            $table->string('description');
 
             $table->timestamps();
         });
