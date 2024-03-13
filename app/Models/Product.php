@@ -10,6 +10,8 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $appends = ['image_url'];
+
     protected $fillable = [
         'category_id',
         'brand_id',
@@ -45,5 +47,12 @@ class Product extends Model
     public function brand(): BelongsTo
     {
         return $this->belongsTo(Brand::class);
+    }
+
+    public function getImageUrlAttribute()
+    {
+        return $this->image
+            ? asset('storage/product/' . $this->image)
+            : asset('storage/product/no-image.png');
     }
 }
