@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\BaseApiController;
 use App\Models\ProductIn;
 use App\Http\Requests\StoreProductInRequest;
 use App\Http\Requests\UpdateProductInRequest;
+use App\Models\Product;
 
 class ProductInController extends BaseApiController
 {
@@ -25,6 +26,10 @@ class ProductInController extends BaseApiController
     public function store(StoreProductInRequest $request)
     {
         $productIn = ProductIn::create($request->validated());
+
+        $product = Product::find($productIn->product_id);
+        $product->stock = $product->stock + $productIn->stock;
+        $product->save();
 
         return $this->sendResponse($productIn, 'ProductIn created successfully.');
     }
