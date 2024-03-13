@@ -14,14 +14,16 @@ return new class extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
 
-            $table->string('invoice_number')->unique();
-            $table->date('sale_date');
-            $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+
             $table->unsignedBigInteger('product_id');
-            $table->enum('status', ['Ordered', 'Confirm', 'Shipping', 'Delivered'])->default('Ordered');
-            $table->string('payment');
-            $table->string('total_payment');
-            $table->enum('payment_status', ['Paid', 'Unpaid', 'partially Paid'])->default('Unpaid');
+            $table->foreign('product_id')->references('id')->on('products');
+
+            $table->string('date');
+            $table->string('selling_price');
+            $table->string('stock');
+            $table->string('description')->nullable();
 
             $table->timestamps();
         });
