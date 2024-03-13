@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('date');
             $table->string('purchase_price');
             $table->string('stock');
-            $table->string('description');
+            $table->string('description')->nullable();
 
             $table->timestamps();
         });

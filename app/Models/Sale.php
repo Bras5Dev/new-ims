@@ -11,36 +11,30 @@ class Sale extends Model
     use HasFactory;
 
     protected $fillable = [
-        'invoice_number',
-        'sale_date',
-        'customer_id',
+        'date',
+        'user_id',
         'product_id',
-        'status',
-        'payment',
-        'total_payment',
-        'payment_status',
+        'selling_price',
+        'stock',
+        'description',
     ];
 
    public static $rules = [
-        'invoice_number' => 'required',
-        'sale_date' => 'required',
-        'customer_id' => 'required',
+        'date' => 'required',
+        'user_id' => 'required',
         'product_id' => 'required',
-        'status' => 'required',
-        'payment' => 'required',
-        'total_payment' => 'required',
-        'payment_status' => 'required',
+        'selling_price' => 'required',
+        'stock' => 'required',
+        'description' => 'nullable',
     ];
 
     public static $update_rules = [
-        'invoice_number' => 'required',
-        'sale_date' => 'required',
-        'customer_id' => 'required',
+        'date' => 'required',
+        'user_id' => 'required',
         'product_id' => 'required',
-        'status' => 'required',
-        'payment' => 'required',
-        'total_payment' => 'required',
-        'payment_status' => 'required',
+        'selling_price' => 'required',
+        'stock' => 'required',
+        'description' => 'nullable',
     ];
 
     public function customer() : BelongsTo
