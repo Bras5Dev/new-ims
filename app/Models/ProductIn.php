@@ -10,10 +10,12 @@ class ProductIn extends Model
     use HasFactory;
 
     protected $fillable = [
+        'product_id',
         'user_id',
-        'payment_method',
-        'bank_id',
-        'amount',
+        'date',
+        'purchase_price',
+        'stock',
+        'description',
     ];
 
    protected $hidden = [
@@ -22,9 +24,12 @@ class ProductIn extends Model
    ];
 
    public static $rules = [
-        'payment_method' => 'required|in:cash,bank',
-        'bank_id' => 'required_if:payment_method,bank|exists:banks,id',
-        'amount' => 'required|numeric',
+        'product_id' => 'required',
+        'user_id' => 'required',
+        'date' => 'required',
+        'purchase_price' => 'required',
+        'stock' => 'required',
+        'description' => 'nullable',
    ];
 
 }
